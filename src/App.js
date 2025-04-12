@@ -1,15 +1,17 @@
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './pages/Login'; // ajusta la ruta según tu estructura
+import TaskList from './pages/TaskList/TaskList';
+import Login from './pages/Login'; // Componente de login
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
-        {/* otras rutas como dashboard */}
+        <Route path="/tasks" element={<TaskList />} />
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;
