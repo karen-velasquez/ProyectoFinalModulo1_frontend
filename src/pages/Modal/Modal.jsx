@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Modal.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrash, faCheckCircle, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Modal = ({ isOpen, closeModal, taskToEdit, onTaskSaved }) => {
   const [formData, setFormData] = useState({
@@ -69,7 +71,7 @@ const Modal = ({ isOpen, closeModal, taskToEdit, onTaskSaved }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-popup">
-        <button className="modal-close" onClick={closeModal}>×</button>
+        <button onClick={closeModal}>×</button>
         <h2>{taskToEdit ? 'Editar Tarea' : 'Registrar Nueva Tarea'}</h2>
         <form className="modal-form" onSubmit={handleSubmit}>
           <input
@@ -94,7 +96,13 @@ const Modal = ({ isOpen, closeModal, taskToEdit, onTaskSaved }) => {
             onChange={handleChange}
             required
           />
-          <button type="submit">{taskToEdit ? 'Guardar Cambios' : 'Guardar Tarea'}</button>
+         <button className="button-click" type="submit">
+            {taskToEdit ? (
+              <FontAwesomeIcon icon={faEdit} /> // Lápiz para editar
+            ) : (
+              <FontAwesomeIcon icon={faCheckCircle} /> // Check para guardar
+            )}
+          </button>
         </form>
       </div>
     </div>

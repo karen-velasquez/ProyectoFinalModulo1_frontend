@@ -200,10 +200,6 @@ body {
   font-weight: 500;
 }
 
-.header-navigation a:hover,
-.header-navigation .header-action-link:hover {
-  text-decoration: underline; /* Efecto hover */
-}
 
 /* Enlaces de acción */
 .header-action-link {
@@ -217,13 +213,6 @@ body {
   transition: background-color 0.3s ease;
 }
 
-.header-action-link:hover {
-  background-color: #0056b3;
-}
-
-.header-action-link:active {
-  background-color: #003f7f;
-}
 
 /* Menú responsive (cuando el tamaño de pantalla es pequeño) */
 .header-navigation.mobile {

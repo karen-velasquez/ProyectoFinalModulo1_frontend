@@ -72,8 +72,8 @@ const Login = () => {
                 className="eye-icon"
                 style={{
                   position: 'absolute',
-                  right: '10px',
-                  top: '50%',
+                  right: '15px',
+                  top: '60%',
                   transform: 'translateY(-50%)',
                   cursor: 'pointer',
                 }}

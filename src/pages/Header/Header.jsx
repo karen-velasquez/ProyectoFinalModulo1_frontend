@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import './Header.css';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../images/mistareas.png';
-
-
+import { FaPlus, FaSignOutAlt } from 'react-icons/fa'; // Importando los iconos de react-icons
 
 
 const Header = ({ openModal }) => {
@@ -23,20 +22,17 @@ const Header = ({ openModal }) => {
     <header className="header-outer">
       <div className="header-inner responsive-wrapper">
         <div className="header-logo">
-        <img src={logo} alt="Logo" />
- 
+          <img src={logo} alt="Logo" />
         </div>
 
         <nav className={`header-navigation ${isMobileMenuOpen ? 'active' : ''}`}>
-
-
           {/* Enlaces de acción */}
           <a href="#" onClick={openModal} className="header-action-link">
-            Registrar Nueva Tarea
+            <FaPlus /> {/* Icono para "Nueva Tarea" */}
           </a>
 
           <a href="#" onClick={handleLogout} className="header-action-link">
-            Cerrar sesión
+            <FaSignOutAlt /> {/* Icono para "Cerrar sesión" */}
           </a>
         </nav>
 

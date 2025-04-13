@@ -1,3 +1,16 @@
+/* Contenedor general con scroll para filtros y tabla */
+.scroll-container {
+  max-height: calc(100vh - var(--header-outer-height) - 20px); /* Ajusta el tamaño total según el header */
+  overflow-y: auto; /* Permite el scroll vertical */
+  padding: 20px;
+  border-radius: 8px; /* Bordes redondeados */
+  background-color: #fff; /* Fondo blanco */
+  border: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espacio entre filtros y tabla */
+}
+
 /* Estilos generales */
 input[type="text"],
 select,
@@ -17,12 +30,16 @@ input[type="date"]:focus {
 
 /* Estilo de los filtros */
 .filters-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+  justify-content: center; /* Centra los filtros horizontalmente */
+  align-items: center; /* Centra los filtros verticalmente */
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  width: 100%; /* Asegura que ocupe todo el ancho disponible */
+  padding: 0 20px; /* Agrega algo de padding para evitar que se peguen al borde */
+  box-sizing: border-box;
 }
+
 
 input[type="text"],
 select,
@@ -30,6 +47,7 @@ input[type="date"] {
   width: 180px; /* Ajustar el tamaño de los filtros */
 }
 
+/* Estilos para el botón de búsqueda */
 button.search-btn {
   display: inline-block;
   vertical-align: middle;
@@ -74,7 +92,7 @@ table td {
   background-color: #fff;
 }
 
-/* Estilos para botones */
+/* Estilos para los botones en la tabla */
 .button-container {
   display: flex;
   justify-content: space-around;
@@ -102,6 +120,7 @@ button:hover {
   opacity: 0.8;
 }
 
+/* Estilos para los botones de acción en la tabla */
 .edit-btn {
   background-color: rgb(184, 184, 39);
 }
@@ -137,6 +156,7 @@ button:hover {
   color: #f44336;
 }
 
+/* Botón de búsqueda */
 .search-btn {
   background-color: #4CAF50;
   color: white;

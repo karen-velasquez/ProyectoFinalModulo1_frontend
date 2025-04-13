@@ -127,116 +127,96 @@ const TaskList = () => {
     <div>
       <br />
       <br />
-
-      <div className="filters-container">
-  <input
-    type="text"
-    placeholder="Buscar por título o descripción..."
-    value={filter}
-    onChange={(e) => setFilter(e.target.value)}
-  />
-
-  <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
-    <option value="">Todos los estados</option>
-    <option value="pendiente">Pendiente</option>
-    <option value="en progreso">En progreso</option>
-    <option value="completada">Completada</option>
-  </select>
-
-  <input
-    type="date"
-    value={dueDate}
-    onChange={(e) => setDueDate(e.target.value)}
-  />
-
-  <button onClick={handleSearch} className="search-btn">
-    <FontAwesomeIcon icon={faSearch} />
-  </button>
-</div>
-
-
-
-      <table>
-        <thead>
-          <tr>
-            <th>Título</th>
-            <th>Estado</th>
-            <th>Fecha límite</th>
-            <th>Descripción</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tasks.length > 0 ? (
-            tasks.map((task) => (
-              <tr key={task.id}>
-                <td>{task.title}</td>
-                <td>{task.status}</td>
-                <td>{task.dueDate ? new Date(task.dueDate).toLocaleDateString() : ''}</td>
-                <td>{task.description}</td>
-                <td className="button-container">
-  {/* Botón de editar solo si la tarea está pendiente */}
-  {task.status === 'pendiente' && (
-    <button
-      onClick={() => handleEdit(task)}
-      className="edit-btn"
-      title="Editar"
-    >
-      <FontAwesomeIcon icon={faEdit} />
-    </button>
-  )}
-
-  {/* Botón para actualizar a "En Progreso" solo si la tarea está pendiente */}
-  {task.status === 'pendiente' && (
-    <button
-      onClick={() => updateTaskStatus(task.id, 'en progreso')}
-      className="update-status-btn"
-      title="Actualizar a En Progreso"
-    >
-      <FontAwesomeIcon icon={faSyncAlt} />
-    </button>
-  )}
-
-  {/* Botón para actualizar a "Completada" solo si la tarea está en progreso */}
-  {task.status === 'en progreso' && (
-    <button
-      onClick={() => updateTaskStatus(task.id, 'completada')}
-      className="update-status-btn"
-      title="Actualizar a Completada"
-    >
-      <FontAwesomeIcon icon={faCheckCircle} />
-    </button>
-  )}
-
-  {/* Botón de eliminar solo si la tarea está completada */}
-  {task.status === 'completada' && (
-    <button
-      onClick={() => handleDelete(task.id)}
-      className="delete-btn"
-      title="Eliminar"
-    >
-      <FontAwesomeIcon icon={faTrash} />
-    </button>
-  )}
-</td>
-
-              </tr>
-            ))
-          ) : (
-            <tr><td colSpan="5">No hay tareas encontradas</td></tr>
-          )}
-        </tbody>
-      </table>
-
+  
+      {/* Contenedor principal con scroll */}
+      <div className="scroll-container">
+        <div className="filters-container">
+          <input
+            type="text"
+            placeholder="Buscar por título o descripción..."
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+          />
+  
+          <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
+            <option value="">Todos los estados</option>
+            <option value="pendiente">Pendiente</option>
+            <option value="en progreso">En progreso</option>
+            <option value="completada">Completada</option>
+          </select>
+  
+          <input
+            type="date"
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
+          />
+  
+          <button onClick={handleSearch} className="search-btn">
+            <FontAwesomeIcon icon={faSearch} />
+          </button>
+        </div>
+  
+        {/* Tabla de tareas */}
+        <table>
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Estado</th>
+              <th>Fecha límite</th>
+              <th>Descripción</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tasks.length > 0 ? (
+              tasks.map((task) => (
+                <tr key={task.id}>
+                  <td>{task.title}</td>
+                  <td>{task.status}</td>
+                  <td>{task.dueDate ? new Date(task.dueDate).toLocaleDateString() : ''}</td>
+                  <td>{task.description}</td>
+                  <td className="button-container">
+                    {/* Botones de acciones */}
+                    {task.status === 'pendiente' && (
+                      <button onClick={() => handleEdit(task)} className="edit-btn" title="Editar">
+                        <FontAwesomeIcon icon={faEdit} />
+                      </button>
+                    )}
+                    {task.status === 'pendiente' && (
+                      <button onClick={() => updateTaskStatus(task.id, 'en progreso')} className="update-status-btn" title="Actualizar a En Progreso">
+                        <FontAwesomeIcon icon={faSyncAlt} />
+                      </button>
+                    )}
+                    {task.status === 'en progreso' && (
+                      <button onClick={() => updateTaskStatus(task.id, 'completada')} className="update-status-btn" title="Actualizar a Completada">
+                        <FontAwesomeIcon icon={faCheckCircle} />
+                      </button>
+                    )}
+                    {task.status === 'completada' && (
+                      <button onClick={() => handleDelete(task.id)} className="delete-btn" title="Eliminar">
+                        <FontAwesomeIcon icon={faTrash} />
+                      </button>
+                    )}
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr><td colSpan="5">No hay tareas encontradas</td></tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+  
       {/* Modal de creación y edición */}
       <Modal
         isOpen={isModalOpen}
         closeModal={handleCloseModal}
-        taskToEdit={taskToEdit}  // Pasamos la tarea a editar al modal
-        onTaskSaved={handleTaskSaved}  // Recargar tareas cuando se guarda
+        taskToEdit={taskToEdit}
+        onTaskSaved={handleTaskSaved}
       />
     </div>
   );
+  
 };
 
 export default TaskList;

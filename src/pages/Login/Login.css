@@ -1,8 +1,3 @@
-:root {
-    --background: #1a1a2e;
-    --color: #ffffff;
-    --primary-color: #0f3460;
-}
 
 * {
     box-sizing: border-box;
@@ -16,8 +11,8 @@ body {
     margin: 0;
     box-sizing: border-box;
     font-family: "poppins";
-    background: var(--background);
-    color: var(--primary-color);
+    background: #1a1a2e;
+    color: #0f3460;
     letter-spacing: 1px;
     transition: background 0.2s ease;
     -webkit-transition: background 0.2s ease;
@@ -28,7 +23,7 @@ body {
 
 a {
     text-decoration: none;
-    color: var(--color);
+    color: #ffffff;
 }
 
 h1 {
@@ -40,6 +35,12 @@ h1 {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image: radial-gradient(circle, #a6d8ff, #cfe9f7, #f0faff);
+
+
+
+
+
 }
 
 .login-container {
@@ -64,7 +65,7 @@ h1 {
     padding: 14.5px;
     width: 100%;
     margin: 2rem 0;
-    color: var(--color);
+    color: #ffffff;
     outline: none;
     background-color: #9191911f;
     border: none;
@@ -86,8 +87,8 @@ h1 {
 }
 
 .login-container form button {
-    background-color: var(--primary-color);
-    color: var(--color);
+    background-color: #0f3460;
+    color: #ffffff;
     display: block;
     padding: 13px;
     border-radius: 5px;
@@ -122,7 +123,7 @@ h1 {
 .circle {
     width: 8rem;
     height: 8rem;
-    background: var(--primary-color);
+    background: #0f3460;
     border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -227,18 +228,38 @@ h1 {
     
   }
   
-  button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 15px 20px;
-    border: none;
-    cursor: pointer;
+  .login-container button {
+    color: #ffffff;
+    display: block;
+    padding: 13px;
+    border-radius: 5px;
+    outline: none;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+    font-weight: bold;
     width: 100%;
-    font-size: 1rem;
-    margin-top: 10px;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    transition: all 0.1s ease-in-out;
+    border: none;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    background-color: #4CAF50;
+
   }
   
-  button:hover {
-    background-color: #45a049;
+  .login-container button:hover {
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.80);
+    transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    -moz-transform: scale(1.02);
+    -ms-transform: scale(1.02);
+    -o-transform: scale(1.02);
   }
   
