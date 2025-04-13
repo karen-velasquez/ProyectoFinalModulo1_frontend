@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import TaskList from './pages/TaskList/TaskList';
-import Login from './pages/Login'; // Componente de login
+import Login from './pages/Login/Login'; // Componente de login
 
 const App = () => {
   return (
