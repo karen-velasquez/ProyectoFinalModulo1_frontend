@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Importando los iconos de ojo
 import './Login.css'; // Asegúrate de importar el CSS
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false); // Estado para controlar la visibilidad de la contraseña
 
   const navigate = useNavigate();
 
@@ -28,11 +30,15 @@ const Login = () => {
       }
 
       localStorage.setItem('token', data.token);
-      navigate('/tasks');
+      navigate('/tasks'); // Redirige a la página de tareas
     } catch (err) {
       console.error(err);
       setError('Error de conexión al servidor');
     }
+  };
+
+  const goToRegister = () => {
+    navigate('/register');
   };
 
   return (
@@ -45,7 +51,7 @@ const Login = () => {
             alt="illustration"
             className="illustration"
           />
-          <h1 className="opacity">LOGIN</h1>
+          <h1 className="opacity">INICIO SESIÓN</h1>
           <form onSubmit={handleSubmit}>
             <input
               type="email"
@@ -54,19 +60,35 @@ const Login = () => {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <input
-              type="password"
-              placeholder="Contraseña"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+            <div className="password-container" style={{ position: 'relative' }}>
+              <input
+                type={showPassword ? 'text' : 'password'} // Cambia entre 'text' y 'password'
+                placeholder="Contraseña"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <span
+                className="eye-icon"
+                style={{
+                  position: 'absolute',
+                  right: '10px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  cursor: 'pointer',
+                }}
+                onClick={() => setShowPassword(!showPassword)} // Cambia la visibilidad de la contraseña
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />} {/* Muestra el icono dependiendo del estado */}
+              </span>
+            </div>
             <button type="submit" className="opacity">Iniciar sesión</button>
             {error && <p style={{ color: 'red' }}>{error}</p>}
           </form>
           <div className="register-forget opacity">
-            <a href="#">REGISTRARSE</a>
-            <a href="#">¿OLVIDASTE TU CONTRASEÑA?</a>
+            <button type="button" onClick={goToRegister} className="link-button">
+              REGISTRARSE
+            </button>
           </div>
         </div>
         <div className="circle circle-two"></div>

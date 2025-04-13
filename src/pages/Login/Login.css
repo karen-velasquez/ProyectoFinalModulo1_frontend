@@ -17,7 +17,7 @@ body {
     box-sizing: border-box;
     font-family: "poppins";
     background: var(--background);
-    color: var(--color);
+    color: var(--primary-color);
     letter-spacing: 1px;
     transition: background 0.2s ease;
     -webkit-transition: background 0.2s ease;
@@ -214,3 +214,31 @@ h1 {
         -o-transform: scale(1);
     }
 }
+
+
+.password-container {
+    position: relative;
+  }
+  
+  .eye-icon {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: white;
+    
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
